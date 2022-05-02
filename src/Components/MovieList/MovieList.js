@@ -22,7 +22,7 @@ function MovieList() {
                 <div className='title-box m-3'>
                     <div className='row'>
                         <div className='col-6'>
-                            <h3>Trending</h3>
+                            <h3 >Trending</h3>
                         </div>
                         <div className='col-6'>
                             <div class="dropdown text-center">
@@ -50,8 +50,20 @@ function MovieList() {
                                                 setMovie(response.data.results)
                                             })
                                         }}>Comedy</a>
-                                    <a class="dropdown-item" href="#">Crime</a>
-                                    <a class="dropdown-item" href="#">Family</a>
+                                    <a class="dropdown-item" 
+                                        onClick={() => {
+                                            axios.get("https://api.themoviedb.org/3/discover/movie?api_key=00a55f69b6879e4f888721dcec3ad3c7&with_genres=80").then((response) => {
+                                                console.log(response.data.results);
+                                                setMovie(response.data.results)
+                                            })
+                                        }}>Crime</a>
+                                    <a class="dropdown-item" 
+                                        onClick={() => {
+                                            axios.get("https://api.themoviedb.org/3/discover/movie?api_key=00a55f69b6879e4f888721dcec3ad3c7&with_genres=10751").then((response) => {
+                                                console.log(response.data.results);
+                                                setMovie(response.data.results)
+                                            })
+                                        }}>Family</a>
                                 </div>
                             </div>
                         </div>
