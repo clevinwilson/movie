@@ -17,3 +17,11 @@
     line-clamp: 3 !important;
     -webkit-box-orient: vertical !important;
 }
+
+.box-hide {
+    display: none;
+}
+
+.box-show {
+    display: block;
+}

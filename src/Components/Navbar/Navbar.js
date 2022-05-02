@@ -7,20 +7,23 @@ import axios from 'axios';
 function Navbar() {
     const [movie, setMovie]=useState([]);
     const[movieName,setMovieName]=useState('');
+    const[box,setBox]=useState(false)
 
     const searchMovie=()=>{
         axios.get(`https://www.omdbapi.com/?apikey=c6924372&s=${movieName}&page=2`).then((response) => {
             console.log(response.data.Search);
             setMovie(response.data.Search)
+            setBox(true)
+            
         })
     }
 
     return (
       <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="#">Movie Detail</a>
+                <a className="navbar-brand" onClick={() => { setBox(false)}}  >Movie Details</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
+                    <span onClick={() => { setBox(false) }}  className="navbar-toggler-icon"></span>
                 </button>
 
                 <div style={{justifyContent:"center"}} className="collapse navbar-collapse mt-4" id="navbarSupportedContent">
@@ -39,7 +42,7 @@ function Navbar() {
                 </div>
           
             </nav>
-            <div className='container'>
+            <div className={box ? 'container box-show' : "container box-hide"}>
                 <div className='row'>
                     {
                         movie.map((movie) => {
