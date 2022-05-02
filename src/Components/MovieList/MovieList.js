@@ -25,7 +25,7 @@ function MovieList() {
                             <h3>Trending</h3>
                         </div>
                         <div className='col-6'>
-                            <div class="dropdown">
+                            <div class="dropdown text-center">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Select Category
                                 </button>
@@ -36,8 +36,20 @@ function MovieList() {
                                             setMovie(response.data.results)
                                         })
                                     }}>Action</a>
-                                    <a class="dropdown-item" href="#">Adventure</a>
-                                    <a class="dropdown-item" href="#">Comedy</a>
+                                    <a class="dropdown-item" 
+                                        onClick={() => {
+                                            axios.get("https://api.themoviedb.org/3/discover/movie?api_key=00a55f69b6879e4f888721dcec3ad3c7&with_genres=12").then((response) => {
+                                                console.log(response.data.results);
+                                                setMovie(response.data.results)
+                                            })
+                                        }}>Adventure</a>
+                                    <a class="dropdown-item" 
+                                        onClick={() => {
+                                            axios.get("https://api.themoviedb.org/3/discover/movie?api_key=00a55f69b6879e4f888721dcec3ad3c7&with_genres=35").then((response) => {
+                                                console.log(response.data.results);
+                                                setMovie(response.data.results)
+                                            })
+                                        }}>Comedy</a>
                                     <a class="dropdown-item" href="#">Crime</a>
                                     <a class="dropdown-item" href="#">Family</a>
                                 </div>
