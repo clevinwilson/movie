@@ -36,6 +36,12 @@ function Navbar() {
                        
                        
                         <a onClick={searchMovie} style={{ borderRadius: "20px" }} className="text-white mt-3 btn btn-primary my-2 my-sm-0"  >Search</a>
+                       {
+                           box?
+                                <a onClick={() => { setBox(false) }} style={{ borderRadius: "20px" }} className="text-white mt-3 btn btn-danger my-2 my-sm-0"  >Close</a> 
+                                :
+                           null     
+                       }
                         
                     </form>
                     
